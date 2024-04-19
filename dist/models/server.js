@@ -15,11 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const producto_1 = __importDefault(require("../routes/producto"));
+const user_1 = __importDefault(require("../routes/user"));
 const connection_1 = __importDefault(require("../db/connection"));
+const user_2 = require("./user");
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
-        this.port = process.env.PORT || '3001';
+        this.port = process.env.PORT || '3000';
         this.listen();
         this.midlewares();
         this.routes();
@@ -37,6 +39,7 @@ class Server {
             });
         });
         this.app.use('/api/productos', producto_1.default);
+        this.app.use('/api/users', user_1.default);
     }
     midlewares() {
         //parseamos el body
@@ -47,6 +50,7 @@ class Server {
     dbConnect() {
         return __awaiter(this, void 0, void 0, function* () {
             yield connection_1.default.authenticate();
+            yield user_2.User.sync();
             console.log('Base de datos conectada');
         });
     }

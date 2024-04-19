@@ -1,7 +1,12 @@
 import { DataTypes} from 'sequelize';
-import db from '../db/connection';
+import sequelize from '../db/connection';
 
-const producto = db.define('producto', {
+ export const producto = sequelize.define('producto', {
+    id:{
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
 
     name: {
         type: DataTypes.STRING
@@ -18,6 +23,6 @@ const producto = db.define('producto', {
 }, {
     createdAt: false,
     updatedAt: false
-});
+},);
 
 export default producto;

@@ -5,7 +5,7 @@ import producto from "../models/producto";
 
 export const getProducts = async (req: Request, res: Response) => {
 
-    const ListProducts = await producto.findAll()
+    const ListProducts = await producto.findAll();
 
     res.json(ListProducts)
 }
