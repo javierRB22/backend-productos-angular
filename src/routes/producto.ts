@@ -2,9 +2,7 @@ import {Router} from 'express';
 import { deleteProduct, getProduct, getProducts, postProduct, updateProduct } from '../controllers/producto';
 import validateToken from './validate.token';
 
-
 const router = Router();
-
 
 router.get('/',validateToken, getProducts);
 router.get('/',getProducts);
