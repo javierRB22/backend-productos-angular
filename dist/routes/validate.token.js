@@ -23,7 +23,7 @@ const validateToken = (req, res, next) => {
     }
     else {
         res.status(401).json({
-            msg: 'Acceso denegado'
+            msg: 'Acceso denegado hola2'
         });
     }
 };
